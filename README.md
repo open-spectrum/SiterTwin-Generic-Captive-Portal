@@ -24,5 +24,15 @@ Install the following packages on Ubuntu:
 sudo apt update
 sudo apt install dnsmasq hostapd python3 python3-venv
 
+```
 in main define
 interface = "your_interface"
+```bash
+git@github.com:open-spectrum/SiterTwin-Generic-Captive-Portal.git
+cd SiterTwin-Generic-Captive-Portal
+python3 -m venv venv
+source venv/bin/activate
+pip install flask
+```
+```bash
+sudo python3 main.py
