@@ -12,7 +12,10 @@
 - Easily customizable HTML/CSS interface
 
 ---
-
+<img src "./imgs/f0.png">
+<img src "./imgs/f1.png">
+<img src "./imgs/f2.png">
+<img src "./imgs/f3.png">
 ## ⚙️ Dependencies
 
 Install the following packages on Ubuntu:
@@ -20,3 +23,6 @@ Install the following packages on Ubuntu:
 ```bash
 sudo apt update
 sudo apt install dnsmasq hostapd python3 python3-venv
+
+in main define
+interface = "your_interface"
