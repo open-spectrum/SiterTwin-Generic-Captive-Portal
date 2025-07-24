@@ -9,30 +9,45 @@
 - Lightweight and modular captive portal
 - Compatible with most systems (Android, iOS, Linux, Windows)
 - Automatically intercepts and redirects clients after connection
-- Easily customizable HTML/CSS interface
+- Easy to customize (HTML, CSS, JS)
 
 ---
-<img src= "./imgs/f0.png">
-<img src ="./imgs/f1.png">
-<img src= "./imgs/f2.png">
-<img src ="./imgs/f3.png">
-## ⚙️ Dependencies
 
-Install the following packages on Ubuntu:
+## 📸 Screenshots
+
+<div align="center">
+  <img src="./imgs/f0.png" width="400px">
+  <img src="./imgs/f1.png" width="400px"><br>
+  <img src="./imgs/f2.png" width="400px">
+  <img src="./imgs/f3.png" width="400px">
+</div>
+
+---
+
+## ⚙️ Requirements
+
+Install required system packages (Ubuntu/Debian):
 
 ```bash
 sudo apt update
 sudo apt install dnsmasq hostapd python3 python3-venv
-
 ```
-in main define
-interface = "your_interface"
+📦 Installation
+Clone the repository:
 ```bash
-git@github.com:open-spectrum/SiterTwin-Generic-Captive-Portal.git
+git clone https://github.com/open-spectrum/SiterTwin-Generic-Captive-Portal.git
 cd SiterTwin-Generic-Captive-Portal
+```
+Create and activate a Python virtual environment:
+
+```bash
 python3 -m venv venv
 source venv/bin/activate
 pip install flask
 ```
-```bash
+interface = "your_interface_name"  # e.g. "wlan0"
 sudo python3 main.py
+
+⚠️ Disclaimer
+This tool is intended for educational and testing purposes only.
+Do not deploy on public or unauthorized networks. Always act ethically and within the law.
