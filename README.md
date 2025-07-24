@@ -12,10 +12,10 @@
 - Easily customizable HTML/CSS interface
 
 ---
-<img src "./imgs/f0.png">
-<img src "./imgs/f1.png">
-<img src "./imgs/f2.png">
-<img src "./imgs/f3.png">
+<img src= "./imgs/f0.png">
+<img src ="./imgs/f1.png">
+<img src= "./imgs/f2.png">
+<img src ="./imgs/f3.png">
 ## ⚙️ Dependencies
 
 Install the following packages on Ubuntu:
