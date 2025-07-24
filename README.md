@@ -46,8 +46,9 @@ source venv/bin/activate
 pip install flask
 ```
 interface = "your_interface_name"  # e.g. "wlan0"
+```bash
 sudo python3 main.py
-
+```
 ⚠️ Disclaimer
 This tool is intended for educational and testing purposes only.
 Do not deploy on public or unauthorized networks. Always act ethically and within the law.
