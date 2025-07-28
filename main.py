@@ -4,18 +4,18 @@ from subprocess import run, Popen, DEVNULL
 import sys
 from subprocess import Popen
 from config import config
-interface = "wlo1"
+interface = "wlo1super"
 
 
 def start_captive_portal():
-    header(True,True,True)
+    header(interface)
     print(f"{LIGHT_BLUE}Flask Logs{END}")
     run(['venv/bin/python', 'app.py'])
 
 
 
 
-def start(interface):
+def start(interface,exit=True):
     print(f"[*]{LIGHT_PURPLE}[Info]{END} {LIGHT_CYAN}Matando serviços conflitantes...{END}")
     run(['sudo', 'airmon-ng', 'check', 'kill'], stdout=DEVNULL, stderr=DEVNULL)
 
@@ -35,7 +35,8 @@ def start(interface):
   
 
     print(f"{LIGHT_GREEN}[*] Todos os serviços iniciados com sucesso.{END}")
-    sys.exit()
+    if exit:
+        sys.exit()
     
 
    
@@ -51,20 +52,24 @@ def stop():
 
 while True:
     run(['clear'])
-    header()
+    header(interface)
     menu()
     option = str(input("Choose Option: "))
     if option == "1":
-        start(interface)
+        start(interface,True)
        
+       
+    elif option == "0":
+       start(interface,False)
+       start_captive_portal() 
     elif option == "2":
         ssid = str(input("SSID: "))
 
         password = str(input("passwd: "))
         if len(password) > 5:
-            config.setAp(name_wifi=ssid,passw=password,password=True)
+            config.setAp(interface=interface,name_wifi=ssid,passw=password,password=True)
         else:
-            config.setAp(name_wifi=ssid,passw=password,password=False)
+            config.setAp(interface=interface,name_wifi=ssid,passw=password,password=False)
             print("open wifi")
     elif option == "3":
         start_captive_portal()

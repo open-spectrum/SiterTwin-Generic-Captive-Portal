@@ -1,9 +1,9 @@
 from subprocess import run
 
-def setAp(password:bool = False,name_wifi:str="free",passw:str="12345678"):
+def setAp(interface,password:bool = False,name_wifi:str="free",passw:str="12345678"):
     config = ""
     if password:
-      config =  f"""interface=wlo1
+      config =  f"""interface={interface}
         driver=nl80211
         ssid={name_wifi}
         hw_mode=g
@@ -17,7 +17,7 @@ def setAp(password:bool = False,name_wifi:str="free",passw:str="12345678"):
         wpa_pairwise=TKIP
         rsn_pairwise=CCMP""".replace(" ","")
     else:
-       config = f"""interface=wlo1
+       config = f"""interface={interface}
         driver=nl80211
         ssid={name_wifi}
         hw_mode=g
@@ -60,3 +60,25 @@ def get_all_captive_portal():
    dirs = run(['ls','./templates/site_static'],capture_output=True,text=True).stdout.split("\n")
    dirs.pop()
    return dirs
+
+
+def get_ap_name():
+   with open("./config/hostapd.conf","r") as file:
+     contents = file.read().split("\n")
+     for content in contents:
+        
+        if "ssid=" in content:
+           return content[(content.find("=")+1):]
+   return "CONFIG YOUR APP IN OPT 2"
+
+def get_ap_password():
+   with open("./config/hostapd.conf","r") as file:
+     contents = file.read().split("\n")
+     for content in contents:
+        
+        if "wpa_passphrase=" in content:
+           return content[(content.find("=")+1):]
+   return "NOT PASSWORD"
+
+print(get_ap_name())
+print(get_ap_password())

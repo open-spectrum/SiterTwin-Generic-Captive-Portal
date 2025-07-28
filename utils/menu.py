@@ -2,31 +2,30 @@ from utils.colors import *
 from subprocess import run
 from config import config
 
-def header(hostapd:bool = False,dnsmasq:bool =False,flask_serve:bool=False):
-   hostapd_status = f"{LIGHT_RED}[Off]{END}"
-   dnsmasq_status = f"{LIGHT_RED}[Off]{END}"
-   flask_serve_status = f"{LIGHT_RED}[Off]{END}"
-   captive_portal = f"{LIGHT_CYAN}{config.get_captive_portal_current()} {END}" 
-   if hostapd : hostapd_status = f"{LIGHT_GREEN}[Ok]{END}"
-   if dnsmasq: dnsmasq_status = f"{LIGHT_GREEN}[Ok]{END}"
-   if flask_serve:flask_serve_status = f"{LIGHT_GREEN}[Ok]{END}"
+def header(interface):
+   
+  captive_portal = f"{LIGHT_CYAN}{config.get_captive_portal_current()} {END}" 
+  ap_name = f"{LIGHT_GREEN}[{config.get_ap_name()}]{END}"
+  ap_password = f"{LIGHT_GREEN}[{config.get_ap_password()}]{END}"
+  interface = f"{LIGHT_GREEN}[{interface}]{END}"
       
-   print(f"""{PURPLE}
+  print(f"""{PURPLE}
  █▀ █▄█ █▀ ▀█▀ █▀▀ █▀█   ▀█▀ █░█░█ █ █▄░█
  ▄█ ░█░ ▄█ ░█░ ██▄ █▀▄   ░█░ ▀▄▀▄▀ █ █░▀█
 {END}
- {LIGHT_CYAN}𓂃 ִֶָ⋆🌷͙⋆ ִֶָ·𓂃 ִֶָ v1 by @open-spectrum 𓂃˖·ִֶָ🌷͙⋆ ִֶָ·˳ ִֶָ{END}
-  Services:
-  🧩 HOSTAPD         {hostapd_status}
-  🧩 DNSMASQ         {dnsmasq_status} 
-  🧩 FLASK           {flask_serve_status}
-  🧩 CAPTIVE PORTAL: {captive_portal}
+ {LIGHT_CYAN}𓂃 ִֶָ⋆🌷͙⋆ ִֶָ·𓂃 ִֶָ v1.01 by @open-spectrum 𓂃˖·ִֶָ🌷͙⋆ ִֶָ·˳ ִֶָ{END}
+  Ap Info:
+  🧩 WIFI NAME:         {ap_name}
+  🧩 PASSWORD:          {ap_password} 
+  🧩 INTERFACE:         {interface}
+  🧩 CAPTIVE PORTAL:    {captive_portal}
   +++++++++++++++++++++++++++++++++++++++++++++++++++
     """)
 def menu():
    print("""
   ✨ Ｍｅｎｕ
-  1° Start
+  0° Start All       
+  1° Start Ap
   2° Config Ap
   3° Start Captive Portal
   4° Config Captive Portal

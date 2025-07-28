@@ -1,1 +1,1 @@
-captive_portal_current:gateway_login
+captive_portal_current:custom_page
