@@ -45,8 +45,8 @@ python3 -m venv venv
 source venv/bin/activate
 pip install flask
 ```
-interface = "your_interface_name"  # e.g. "wlan0"
-config/config.py add your interface
+in main.py  interface = "your_interface_name"  # e.g. "wlan0"
+
 ```bash
 sudo python3 main.py
 ```
